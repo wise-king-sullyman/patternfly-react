@@ -71,7 +71,7 @@ class VerticalPage extends React.Component {
     );
 
     const Header = (
-      <Masthead display={{ default: 'inline' }}>
+      <Masthead>
         <MastheadToggle>
           <PageToggleButton
             variant="plain"
@@ -253,7 +253,7 @@ class VerticalPage extends React.Component {
     );
 
     const Header = (
-      <Masthead display={{ default: 'inline' }}>
+      <Masthead>
         <MastheadToggle>
           <PageToggleButton
             variant="plain"
@@ -340,7 +340,7 @@ class FillPage extends React.Component {
     );
 
     const Header = (
-      <Masthead display={{ default: 'inline' }}>
+      <Masthead>
         <MastheadToggle>
           <PageToggleButton
             variant="plain"
@@ -412,7 +412,7 @@ class UncontrolledNavPage extends React.Component {
     );
 
     const Header = (
-      <Masthead display={{ default: 'inline' }}>
+      <Masthead>
         <MastheadToggle>
           <PageToggleButton variant="plain" aria-label="Global navigation">
             <BarsIcon />
@@ -496,7 +496,7 @@ class GroupPage extends React.Component {
     );
 
     const Header = (
-      <Masthead display={{ default: 'inline' }}>
+      <Masthead>
         <MastheadToggle>
           <PageToggleButton
             variant="plain"
