@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Panel } from '../Panel';
 import { PanelMain } from '../PanelMain';
 import { PanelMainBody } from '../PanelMainBody';
@@ -103,4 +103,41 @@ test('Renders with the inherited element props spread to the component', () => {
 test('Matches the snapshot', () => {
   const { asFragment } = render(<Panel>Test</Panel>);
   expect(asFragment()).toMatchSnapshot();
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel a11y={{ announce: 'assertive' }}>Content</Panel>);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('assertive');
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel a11y={{ announce: 'polite' }}>Content</Panel>);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('polite');
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel a11y={{ announce: 'off' }}>Content</Panel>);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('off');
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel>Content</Panel>);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('polite');
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel a11y={{ announce: 'assertive' }}>Content</Panel>);
+  fireEvent.click(container.querySelector('div') as Element);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('assertive');
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel a11y={{ announce: 'polite' }}>Content</Panel>);
+  fireEvent.click(container.querySelector('div') as Element);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('polite');
+});
+
+test('Renders correctly', () => {
+  const { container } = render(<Panel a11y={{ announce: 'off' }}>Content</Panel>);
+  expect(container.querySelector('div')?.attributes['aria-live']).toBe('off');
 });

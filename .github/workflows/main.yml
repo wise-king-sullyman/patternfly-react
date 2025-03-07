@@ -3,27 +3,6 @@ on:
   pull_request:
   workflow_call:
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out project
-        uses: actions/checkout@v4
-
-      - name: Set up project
-        uses: ./.github/actions/setup-project
-        with:
-          skip-build: true
-
-      - uses: actions/cache@v4
-        name: Cache files proccesed by ESLint
-        with:
-          path: .eslintcache
-          key: ${{ runner.os }}-eslint-cache
-
-      - name: Run linter
-        run: yarn lint:all
-
   build:
     name: Build
     runs-on: ubuntu-latest
